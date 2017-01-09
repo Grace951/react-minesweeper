@@ -1,81 +1,72 @@
-var webpack = require('webpack');
-var path = require('path');
-var HtmlWebpackPlugin  = require('html-webpack-plugin');
+import webpack from 'webpack';
+import path from 'path';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+let HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 	title: 'ChingChingTest',
-	template: path.resolve(__dirname, './example/index.html'),
+	template: __dirname + '/src/index.html',
 	filename: 'index.html',
 	inject: 'body'
 });
 
-var config = {
+export default {
 	debug: true,
 	devtool: 'inline-source-map',
-	devServer:{
-		stats:{
-		hash:         false,
-		version:      false,
-		timings:      true,
-		assets:       true,
-		chunks:       false,
-		chunkModules: false,
-		modules:      false,
-		cached:       false,
-		reasons:      false,
-		source:       false,
-		errorDetails: true,
-		chunkOrigins: false,
-		color: true
-		}
-	},	
 	noInfo: false,
 	entry: [
-		path.resolve(__dirname, './example/index.js')
+		'eventsource-polyfill', // necessary for hot reloading with IE
+		'webpack-hot-middleware/client?reload=true', //note that it reloads the page if hot module reloading fails.
+		path.resolve(__dirname, 'src/index.js')
 	],
 	target: 'web',
 	output: {
-		path: __dirname + '/dist', 
+		path: __dirname + '/dist', // Note: Physical files are only output by the production build task `npm run build`.
 		publicPath: '/',
 		filename: 'bundle.js'
+	},
+	devServer: {
+		contentBase: path.resolve(__dirname, 'src')
 	},
 	plugins: [
 		HtmlWebpackPluginConfig,
 		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoErrorsPlugin()
+		new webpack.NoErrorsPlugin(),
+		new ExtractTextPlugin('css/main.css', {
+			allChunks: true
+		})
 	],
 	module: {
 		loaders: [
 			{
 				test: /(\.jsx?$|\.js$)/,
-				include: [
-					path.join(__dirname, 'src'),
-					path.join(__dirname, 'example')
-				],
+				include: path.join(__dirname, 'src'),
 				exclude: /(node_modules)/,
 				loaders: ['babel']
 			},
 			{
-				test: /(\.scss?$|\.sass$)/,
+				test   : /\.css$/,
+				loader: "style-loader!css-loader?sourceMap"
+			},
+			{
+				test: /(\.sass$|\.scss$)/,
+				loader: ExtractTextPlugin.extract(
+					'style', // The backup style loader
+					'css?sourceMap!sass?sourceMap&includePaths[]=./sass',
+					{ publicPath: '../'}
+				)
+			},
+			{
+				test: /\.(ttf|eot|svg|woff(2)?)(\?\S*)?$/,
+				loader: "file-loader?name=fonts/[name].[ext]"
+			},
+			{
+				test: /\.(jpe?g|png|gif|svg)$/i,
 				loaders: [
-					'style',
-					'css',
-					'sass'
+					'file-loader?name=img/[name].[ext]&context=./img',
+					'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
 				]
 			}
 		]
-	},
-	resolve:{
-		root: [
-			path.resolve('src'),
-			path.resolve('src/components'),
-			path.resolve('node_modules')
-		],
-		extensions:['','.js','.jsx']
-	},
-	resolveLoader:{
-		root: path.resolve('node_modules')
-	},	
+	}
 };
-
-module.exports = config;

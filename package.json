@@ -4,8 +4,11 @@
   "description": "react minesweeper game",
   "main": "dist/react-minesweeper.min.js",
   "scripts": {
-    "build": "webpack --mode=build  --config=webpack.config.prod.js",
-    "dev": "webpack-dev-server --inline --hot --config=webpack.config.dev.js"
+    "start": "npm-run-all --parallel open:src lint:watch",
+    "open:src": "babel-node tools/srcServer.js",
+    "lint": "node_modules/.bin/esw webpack.config.* src tools",
+    "lint:watch": "npm run lint -- --watch",
+    "build": "babel-node tools/build.js"
   },
   "keywords": [
     "react",
@@ -17,12 +20,14 @@
   "peerDependencies": {},
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
+    "extract-text-webpack-plugin": "^1.0.1",
     "lodash": "^4.17.4",
     "lodash.isequal": "^4.4.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^5.0.1",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "resolve-url": "^0.2.1"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

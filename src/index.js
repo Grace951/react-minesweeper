@@ -4,8 +4,8 @@ require('./index.sass');
 import { render } from 'react-dom';
 import React from 'react';
 import { Provider } from 'react-redux';
-import Bomb from '../src/components/Bomb';
-import {store} from '../src/store/index';
+import Bomb from './components/Bomb';
+import {store} from './store/index';
 
 render(<Provider store={store}>
 			<Bomb />
