@@ -1,46 +1,18 @@
+## Live Demo 
+
+Live demo: [`https://grace951.github.io/react-minesweeper/`](https://grace951.github.io/react-minesweeper/)
+
+
 # react-minesweeper 
 
 ![demo gif](https://github.com/Grace951/react-minesweeper/raw/master/screenshot.png)
 
-React image carousel is a React component for building image galleries and carousels
-* Thumbnail navigation configurable
-* Fade In/Fade Out
-* Autoplay configurable
-* Loop configurable
-* Prev/Next image
 
-## Live Demo 
-Live demo: [`https://grace951.github.io/react-minesweeper/`](https://grace951.github.io/react-minesweeper/)
-
-
-
-### Example
-Need more example? See [`examples`](https://github.com/Grace951/react-minesweeper/tree/master/example)
-```js
-require('./index.sass');
-
-import React from 'react';
-import { render }  from 'react-dom';
-import Bomb from 'react-minesweeper';
-
-
-render(<Bomb /> , document.getElementById("app"));
-
-		
-```
-
-# Props
-
-N/A
-
-# Notes
-* Feel free to contribute and or provide feedback!   
-
-# Build the example locally
+# Build 
 
 ```
 git clone https://github.com/Grace951/react-minesweeper.git
-cd react-minesweeper/example2
+cd react-minesweeper/
 npm install
 npm start
 ```
