@@ -2,7 +2,7 @@
   "name": "react-minesweeper",
   "version": "0.0.0",
   "description": "react minesweeper game",
-  "main": "dist/react-image-carousel.min.js",
+  "main": "dist/react-minesweeper.min.js",
   "scripts": {
     "build": "webpack --mode=build  --config=webpack.config.prod.js",
     "dev": "webpack-dev-server --inline --hot --config=webpack.config.dev.js"
