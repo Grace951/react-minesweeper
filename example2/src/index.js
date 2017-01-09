@@ -1,7 +1,7 @@
 require('./index.sass');
 
 import React from 'react';
-import render from 'react-dom';
+import { render }  from 'react-dom';
 import Bomb from 'react-minesweeper';
 
 

@@ -20,8 +20,10 @@ Live demo: [`https://grace951.github.io/react-minesweeper/`](https://grace951.gi
 ### Example
 Need more example? See [`examples`](https://github.com/Grace951/react-minesweeper/tree/master/example)
 ```js
+require('./index.sass');
+
 import React from 'react';
-import render from 'react-dom';
+import { render }  from 'react-dom';
 import Bomb from 'react-minesweeper';
 
 
