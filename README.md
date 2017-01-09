@@ -1,9 +1,6 @@
 # react-minesweeper 
 
-[![npm version](https://badge.fury.io/js/react-minesweeper.svg)](https://www.npmjs.com/package/react-minesweeper)
-[![Download Count](http://img.shields.io/npm/dm/react-minesweeperl.svg?style=flat)](https://www.npmjs.com/package/react-minesweeper)
-
-![demo gif](https://github.com/Grace951/react-minesweeper/raw/master/example2/screenshot.png)
+![demo gif](https://github.com/Grace951/react-minesweeper/raw/master/screenshot.png)
 
 React image carousel is a React component for building image galleries and carousels
 * Thumbnail navigation configurable
