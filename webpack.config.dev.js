@@ -4,7 +4,7 @@ var HtmlWebpackPlugin  = require('html-webpack-plugin');
 
 var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 	title: 'ChingChingTest',
-	template: path.resolve(__dirname, './src/example/index.html'),
+	template: path.resolve(__dirname, './example/index.html'),
 	filename: 'index.html',
 	inject: 'body'
 });
@@ -31,7 +31,7 @@ var config = {
 	},	
 	noInfo: false,
 	entry: [
-		path.resolve(__dirname, './src/example/index.js')
+		path.resolve(__dirname, './example/index.js')
 	],
 	target: 'web',
 	output: {
@@ -48,7 +48,10 @@ var config = {
 		loaders: [
 			{
 				test: /(\.jsx?$|\.js$)/,
-				include: path.join(__dirname, 'src'),
+				include: [
+					path.join(__dirname, 'src'),
+					path.join(__dirname, 'example')
+				],
 				exclude: /(node_modules)/,
 				loaders: ['babel']
 			},
