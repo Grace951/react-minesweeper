@@ -1,6 +1,6 @@
 {
   "name": "react-minesweeper",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "react minesweeper game",
   "main": "dist/react-minesweeper.min.js",
   "scripts": {
